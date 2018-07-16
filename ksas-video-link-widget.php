@@ -5,7 +5,7 @@ Plugin Name: KSAS External Video Link Widget
 Plugin URI: https://inkthemes.com
 Description: Link to your video on YouTube. Grabs thumb from API. Opens video in new window.
 Author: KSAS Communications
-Version: 1
+Version: 1.1
 Author URI: http://krieger.jhu.edu
 */
 
