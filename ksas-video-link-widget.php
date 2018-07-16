@@ -3,7 +3,7 @@
 /*
 Plugin Name: KSAS External Video Link Widget
 Plugin URI: https://inkthemes.com
-Description: Link to your video on YouTube or Vimeo. Grabs thumb from API. Opens video in new window.
+Description: Link to your video on YouTube. Grabs thumb from API. Opens video in new window.
 Author: KSAS Communications
 Version: 1
 Author URI: http://krieger.jhu.edu
@@ -11,18 +11,19 @@ Author URI: http://krieger.jhu.edu
 
 class KSAS_Video_Link_Widget extends WP_Widget {
   /**
-  * To create the example widget all four methods will be 
-  * nested inside this single instance of the WP_Widget class.
+  * To create the widget all four methods will be nested
+  * inside this single instance of the WP_Widget class.
   **/
 
 	public function __construct() {
 	$widget_options = array( 
 	  'classname' => 'ksas_video_link_widget',
-	  'description' => 'Link to your video on YouTube or Vimeo. Opens video in new window.',
+	  'description' => 'Link to your video on YouTube. Video opens in new tab.',
 	);
 	parent::__construct( 'ksas_video_link_widget', 'KSAS Video Link Widget', $widget_options );
 	}
 
+	/* Widget Options */
 	public function form($instance) {
 		// Check values
 		if( $instance) {
@@ -32,6 +33,8 @@ class KSAS_Video_Link_Widget extends WP_Widget {
 			$textarea = $instance['textarea'];
 		} else {
 			$title = '';
+			$link = '';
+			$videoid = '';
 			$textarea = '';
 		}
 		?>
@@ -55,6 +58,7 @@ class KSAS_Video_Link_Widget extends WP_Widget {
 		<?php
 		}
 
+	/* Update/Save the widget settings. */
 	public function update($new_instance, $old_instance) {
 		$instance = $old_instance;
 		// Fields
@@ -65,7 +69,7 @@ class KSAS_Video_Link_Widget extends WP_Widget {
 		return $instance;
 		}
 
-		// display widget
+	/* Widget Display */
 	public function widget($args, $instance) {
 		extract( $args );
 
@@ -91,12 +95,12 @@ class KSAS_Video_Link_Widget extends WP_Widget {
 		</div>
 	
 		<?php echo $after_widget; 
-		}
+	}
 }
 
-		//register widgets
-		add_action('widgets_init', 'ksas_register_external_video_link_widgets');
-			function ksas_register_external_video_link_widgets() {
-				register_widget('KSAS_Video_Link_Widget');
-			}
+/* Register Widget */
+add_action('widgets_init', 'ksas_register_external_video_link_widgets');
+	function ksas_register_external_video_link_widgets() {
+		register_widget('KSAS_Video_Link_Widget');
+	}
 ?>
