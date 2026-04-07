@@ -1,0 +1,63 @@
+/**
+ * KSAS Video Link Widget Styles
+ * Version: 3.0
+ */
+
+.widget.ksas_video_link_widget .video-thumbnail {
+	position: relative;
+}
+
+/* Hover state for the link/thumbnail */
+.widget.ksas_video_link_widget .video-thumbnail a:hover {
+	/* Maps to @apply text-primary */
+	color: var(--color-primary, #31261D);
+}
+
+/* Thumbnail Image styling */
+.widget.ksas_video_link_widget .video-thumbnail img {
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0.5rem;
+	/* 2 units */
+	padding-bottom: 0.5rem;
+	/* 2 units */
+	margin-top: 1rem;
+	/* 4 units */
+	margin-bottom: 1rem;
+	/* 4 units */
+	display: block;
+}
+
+/* Play Button Overlay */
+.widget.ksas_video_link_widget .video-thumbnail .playbutton::before {
+	position: absolute;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	top: 50%;
+	left: 50%;
+	text-rendering: auto;
+	font: var(--fa-font-light);
+	font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free";
+	/* Fallback check */
+	font-size: 4rem !important;
+	font-weight: 300;
+	/* Typical weight for 'light' */
+	text-decoration: inherit;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	content: "\f144";
+	pointer-events: none;
+	/* Ensures the click passes through to the link */
+}
+
+/* Optional: Add a subtle transition for the hover effect */
+.widget.ksas_video_link_widget .video-thumbnail a .playbutton::before {
+	transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.widget.ksas_video_link_widget .video-thumbnail a:hover .playbutton::before {
+	transform: translate(-50%, -50%) scale(1.1);
+}
